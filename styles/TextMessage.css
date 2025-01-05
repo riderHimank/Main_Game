@@ -1,0 +1,57 @@
+.TextMessage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  background: url("../back.png") repeat;
+  z-index: 101;
+  border-top: 1px solid var(--menu-border-color);
+  color: var(--menu-font-color);
+}
+.TextMessage_p {
+  margin: 0;
+  font-size: 7vw;
+  color: white;
+  animation: fade 1s ease-in-out infinite;
+}
+
+.TextMessage_p2 {
+  margin: 0;
+  font-size: 4vw;
+  color: white;
+  margin-bottom: 2vh;
+}
+
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.TextMessage_button {
+  margin: 0;
+  font-size: 3vw;
+  padding: 1vh 2vw;
+  -webkit-appearance: none;
+  background: var(--menu-background);
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+  color: white;
+  border-radius: 24px;
+}
