@@ -79,7 +79,7 @@ class OverworldEvent {
       );
     }
 
-    const message = new TextMessage({
+    const message = new TextMessage2({
       text: this.event.text,
       map: this.map,
       onComplete: () => {
