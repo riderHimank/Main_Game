@@ -6,42 +6,55 @@ class Overworld {
     this.map = null;
   }
 
+  gameLoopStep() {
+    //Clear off the canvas
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    //Establish the camera person
+    const cameraPerson = this.map.gameObjects.hero;
+
+    //Update all objects
+    Object.values(this.map.gameObjects).forEach((object) => {
+      object.update({
+        arrow: this.directionInput.direction,
+        map: this.map,
+      });
+    });
+
+    //Draw Lower layer
+    this.map.drawLowerImage(this.ctx, cameraPerson);
+
+    //Draw Game Objects
+    Object.values(this.map.gameObjects)
+      .sort((a, b) => {
+        return a.y - b.y;
+      })
+      .forEach((object) => {
+        object.sprite.draw(this.ctx, cameraPerson);
+      });
+
+    //Draw Upper layer
+    this.map.drawUpperImage(this.ctx, cameraPerson);
+  }
+
   startGameLoop() {
-    const step = () => {
-      //Clear off the canvas
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    let previousMs;
+    const step = 1 / 90;
 
-      //Establish the camera person
-      const cameraPerson = this.map.gameObjects.hero;
+    const stepFn = (timestampMs) => {
+      if (previousMs === undefined) {
+        previousMs = timestampMs;
+      }
+      let deltaMs = (timestampMs - previousMs) / 1000;
+      while (deltaMs >= step) {
+        this.gameLoopStep();
+        deltaMs -= step;
+      }
+      previousMs = timestampMs - deltaMs * 1000;
 
-      //Update all objects
-      Object.values(this.map.gameObjects).forEach((object) => {
-        object.update({
-          arrow: this.directionInput.direction,
-          map: this.map,
-        });
-      });
-
-      //Draw Lower layer
-      this.map.drawLowerImage(this.ctx, cameraPerson);
-
-      //Draw Game Objects
-      Object.values(this.map.gameObjects)
-        .sort((a, b) => {
-          return a.y - b.y;
-        })
-        .forEach((object) => {
-          object.sprite.draw(this.ctx, cameraPerson);
-        });
-
-      //Draw Upper layer
-      this.map.drawUpperImage(this.ctx, cameraPerson);
-
-      requestAnimationFrame(() => {
-        step();
-      });
+      requestAnimationFrame(stepFn);
     };
-    step();
+    requestAnimationFrame(stepFn);
   }
 
   bindActionInput() {
@@ -95,17 +108,6 @@ class Overworld {
 
     this.startGameLoop();
 
-    // this.map.startCutscene([
-    //   { who: "hero", type: "walk",  direction: "down" },
-    //   { who: "hero", type: "walk",  direction: "down" },
-    //   { who: "npcA", type: "walk",  direction: "up" },
-    //   { who: "npcA", type: "walk",  direction: "left" },
-    //   { who: "hero", type: "stand",  direction: "right", time: 200 },
-    //   { type: "textMessage", text: "WHY HELLO THERE!"}
-    //   // { who: "npcA", type: "walk",  direction: "left" },
-    //   // { who: "npcA", type: "walk",  direction: "left" },
-    //   // { who: "npcA", type: "stand",  direction: "up", time: 800 },
-    // ])
     this.map.startCutscene([
       {
         type: "textMessage2",
