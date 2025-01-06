@@ -122,7 +122,7 @@ class OverworldMap {
 window.OverworldMaps = {
   DemoRoom: {
     lowerSrc: "/map.png",
-    upperSrc: "/images/maps/KitchenUpper.png",
+    upperSrc: "",
     gameObjects: {
       hero: new Person({
         isPlayerControlled: true,

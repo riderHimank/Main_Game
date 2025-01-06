@@ -13,6 +13,12 @@
   font-weight: all;
 }
 
+@font-face {
+  font-family: "stone";
+  src: url("../Stone_Slab.ttf") format("truetype");
+  font-weight: all;
+}
+
 body {
   position: relative;
   background: #00001F;
@@ -46,4 +52,5 @@ body {
   background: #00001fa1;
   color: white;
   font-weight: 300;
+  font-family: stone, "Sans-serif";
 }

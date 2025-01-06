@@ -34,12 +34,14 @@ class Overworld {
       });
 
     //Draw Upper layer
-    this.map.drawUpperImage(this.ctx, cameraPerson);
+    if (this.map.upperImage) {
+      this.map.drawUpperImage(this.ctx, cameraPerson);
+    }
   }
 
   startGameLoop() {
     let previousMs;
-    const step = 1 / 90;
+    const step = 1 / 120;
 
     const stepFn = (timestampMs) => {
       if (previousMs === undefined) {
