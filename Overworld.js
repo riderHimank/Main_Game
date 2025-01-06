@@ -88,8 +88,8 @@ class Overworld {
     Object.keys(this.map.gameObjects).forEach((key) => {
       let object = this.map.gameObjects[key];
       if (key === "hero") {
-        object.x = origin.x;
-        object.y = origin.y;
+        object.x = origin().x;
+        object.y = origin().y;
       }
       object.id = key;
 
