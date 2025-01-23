@@ -1,5 +1,5 @@
 :root {
-  --menu-background: #FFF0D5;
+  --menu-background: #fff0d5;
   --button-font-color: #211424;
 }
 
@@ -21,7 +21,7 @@
 
 body {
   position: relative;
-  background: #00001F;
+  background: url("../back.png") repeat;
   padding: 0;
   margin: 0;
   overflow: hidden;
