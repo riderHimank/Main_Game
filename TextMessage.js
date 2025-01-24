@@ -15,6 +15,7 @@ class TextMessage {
       <p class="TextMessage_p blink">${this.text}</p>
       <p class="TextMessage_p2">You have completed the game in ${this.map.recordTimeSpent()}!</p>
       <button class="TextMessage_button">Play Again</button>
+      <a href="https://alcheringa.in" class="TextMessage_button_2">Exit</a>
     `;
 
     this.element.querySelector("button").addEventListener("click", () => {
