@@ -1,7 +1,7 @@
 const origins = [
-  { x: utils.withGrid(4), y: utils.withGrid(12) },
+  // { x: utils.withGrid(4), y: utils.withGrid(12) },
   { x: utils.withGrid(-9), y: utils.withGrid(1) },
-  { x: utils.withGrid(-9), y: utils.withGrid(-3) },
+  // { x: utils.withGrid(-9), y: utils.withGrid(-3) },
   { x: utils.withGrid(-9), y: utils.withGrid(4) },
 ];
 
